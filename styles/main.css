@@ -27,3 +27,6 @@ paper-dialog {
     position: absolute;
     bottom: 0pc;
     right: 0px; }
+
+paper-button {
+  color: #24BBD2; }

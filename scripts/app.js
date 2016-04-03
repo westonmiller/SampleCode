@@ -36,6 +36,7 @@
 	 		app.closeAddDialog();
  		}
   	};
+
   	app.resetForm = function() {
 	  		app.selectedDropboxId = -1;
 	 		app.$.titleInput.value = "";
@@ -44,6 +45,7 @@
 	 		app.$.resourceDropDown.invalid = false;
 	 		app.$.titleInput.invalid = false;
   	};
+
   	app.editResource = function(resource, index){
   		app.selectedDropboxId = -1;
  		app.$.titleInput.value = resource.title;
@@ -61,6 +63,7 @@
  		app.$.addButton.addEventListener('tap', app.saveResource);
  		app.$.addDialog.open();
   	};
+  	
   	app.getResourceFromForm = function() {
   		var resource = {
  			type: app.$.resourceDropDown.selectedItem.getAttribute('value'),

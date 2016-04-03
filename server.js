@@ -1,7 +1,7 @@
-var express = require('express');
-var sass = require('node-sass-middleware');
-var path = require('path');
-var app = express();
+var express = require('express'),
+	sass = require('node-sass-middleware'),
+	path = require('path'),
+	app = express();
 
 app.use(sass({
         src: __dirname + '/sass', 

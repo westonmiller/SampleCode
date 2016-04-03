@@ -19,10 +19,13 @@
 	<link rel="import" href="bower_components/paper-item/paper-item.html">
 	<link rel="import" href="bower_components/paper-menu/paper-menu.html">
 	<link rel="import" href="bower_components/paper-input/paper-textarea.html">
+
+	<!-- My Custom components -->
 	<link rel="import" href="elements/resources-list.html">
 	<link rel="import" href="styles/app-theme.html">
 
 </head>
+
 <body unresolved>
 	<template is="dom-bind" id="app">
 		<paper-header-panel class="teal">
@@ -45,7 +48,7 @@
 	    			<paper-item value="book">Book</paper-item>
 	    		</paper-menu>
 	    	</paper-dropdown-menu>
-	    	<paper-input label="Title" id="titleInput" validate="^[A-Za-z'\s-]*$" error= "Nope"></paper-input>
+	    	<paper-input label="Title" id="titleInput"></paper-input>
 	    	<paper-input label="Author" id="authorInput"></paper-input>
 	    	<paper-textarea label="Description" id="descriptionInput"></paper-textarea>
      
