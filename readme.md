@@ -1,4 +1,6 @@
-Welcome to Weston's Sample Code!
+#Welcome to Weston's Sample Code!
+
+> These instructions are assuming your running Mac or Linux in terminal
 
 ## Install Node
 
