@@ -1,0 +1,114 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+
+<dom-module id="resources-list">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            h1 {
+                padding-left: 16px;
+                font-size: small;
+                font-weight: 300;
+                margin: 0;
+            }
+            .list{
+                width: 100%;
+                max-width: 700px;
+                max-height: 400px;
+                padding-top: 60px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .cardContainer  {
+                max-height: 350px;
+                padding-top: 20px;
+            }
+            .deleting {
+                opacity: 0;
+                max-height: 0px;
+                padding: 0px;
+                -webkit-filter: blur(20px);
+                transition: opacity .25s linear .25s, padding .25s linear .25s, max-height .25s linear .5s, -webkit-filter .25s linear;
+            }
+            paper-card {
+                font-family: var(--primary-font-family);
+                display: block;
+                width: 80%;
+                overflow: hidden;
+                -webkit-filter: blur(0);
+                margin-left: auto;
+                margin-right: auto;
+            }
+            #deleteButton {
+                color: #E20000;
+            }
+
+        </style>
+
+        
+        <div class="list">
+            <template is="dom-repeat" items="{{resources}}" id="list">
+                <div class$="cardContainer {{item.class}}">
+                    <paper-card heading="{{item.title}}" image="/images/{{item.type}}.jpg" >
+                        <h1>{{item.author}}</h1>
+                        <div class="card-content">
+                            {{item.description}}
+                        </div>
+                        <div class="card-actions">
+                            <paper-icon-button id="deleteButton" icon="delete" on-tap="deleteResource" data-attr="{{index}}"></paper-icon-button>
+                            <paper-icon-button icon="create" on-tap="editResource"></paper-icon-button>
+                        </div>
+                    </paper-card>
+                </div>
+                    
+            </template>
+            
+        </div>
+            
+
+    </template>
+
+    <script>
+        (function() {
+
+            Polymer({
+                is: 'resources-list',
+
+                properties: {
+                    resources: {
+                        type: Array,
+                        notify: true,
+                        value: []
+                    }
+                },
+                addResource: function(resource) {
+                    this.resources.push(resource);
+                    this.notifyPath('resources', this.resources.slice());
+                },
+                deleteResource: function(event) {
+                    var index = event.model.index;
+                    var self = this;
+
+                    self.set('resources.' + index + '.class','deleting');
+
+                    // Lets the card animate out before deleting    
+                    setTimeout(function() {
+                        self.resources.splice(index, 1);
+                        self.notifyPath('resources', self.resources.slice());
+                    }, 750);
+                },
+                editResource: function() {
+                    var app = document.querySelector('#app');
+                    var index = event.model.index;
+                    app.editResource(this.resources[index], index);
+                },
+                saveResource: function(resource, index) {
+                    this.set('resources.' + index ,resource);
+                }
+            });
+        })();
+    </script>
+</dom-module>

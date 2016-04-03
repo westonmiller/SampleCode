@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Resource Tracker</title>
+
+	<link rel="stylesheet" type="text/css" href="/main.css">
+
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+	<!-- Polymer components -->
+	<link rel="import" href="bower_components/polymer/polymer.html">
+	<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+	<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+	<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+	<link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+	<link rel="import" href="bower_components/paper-button/paper-button.html">
+	<link rel="import" href="bower_components/paper-input/paper-input.html">
+	<link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+	<link rel="import" href="bower_components/paper-item/paper-item.html">
+	<link rel="import" href="bower_components/paper-menu/paper-menu.html">
+	<link rel="import" href="bower_components/paper-input/paper-textarea.html">
+	<link rel="import" href="elements/resources-list.html">
+	<link rel="import" href="styles/app-theme.html">
+
+</head>
+<body unresolved>
+	<template is="dom-bind" id="app">
+		<paper-header-panel class="teal">
+			<div class="paper-header">
+				Resource Tracker
+				<paper-icon-button icon="add-circle-outline" on-tap="openAddDialog"></paper-icon-button>
+			</div>
+	    </paper-header-panel>
+
+	    <resources-list resources={{resources}} id="resourcesList">
+	    </resources-list>
+
+	    <paper-dialog id="addDialog" modal>
+	    	<h2>Add Resource</h2>
+	    	
+	    	<paper-dropdown-menu id="resourceDropDown" label="Resource Type" horizontal-align="left">
+	    		<paper-menu selected={{selectedDropboxId}} class=dropdown-content>
+	    			<paper-item value="website">Website</paper-item>
+	    			<paper-item value="podcast">PodCast</paper-item>
+	    			<paper-item value="book">Book</paper-item>
+	    		</paper-menu>
+	    	</paper-dropdown-menu>
+	    	<paper-input label="Title" id="titleInput" validate="^[A-Za-z'\s-]*$" error= "Nope"></paper-input>
+	    	<paper-input label="Author" id="authorInput"></paper-input>
+	    	<paper-textarea label="Description" id="descriptionInput"></paper-textarea>
+     
+	    	<dir class=buttons>
+	    		<paper-button on-tap="closeAddDialog">Close</paper-button>
+	    		<paper-button id="addButton">Add</paper-button>
+	    	</dir>
+	    	
+	    </paper-dialog>
+
+	    
+
+    </template>
+
+<script src="scripts/app.js"></script>
+</body>
+</html>
