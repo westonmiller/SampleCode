@@ -1,3 +1,4 @@
+$primary-color: #24BBD2;
 body {
 	margin: 0px;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -14,7 +15,7 @@ paper-header-panel {
 	padding: 0 10px;
 	color: white;
 	transition: height 0.2s;
-	background-color: #24BBD2;
+	background-color: $primary-color;
 
 	 paper-icon-button {
 		position: absolute;
@@ -34,5 +35,5 @@ paper-dialog {
 	}
 }
 paper-button {
-	color: #24BBD2;
+	color: $primary-color;
 }
